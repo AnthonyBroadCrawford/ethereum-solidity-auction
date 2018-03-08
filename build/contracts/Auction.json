@@ -1,0 +1,75 @@
+{
+  "contractName": "Auction",
+  "abi": [],
+  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820410d00bc43ffe2953a9e4a75f30856acccd594a28c7181a1a32ca01192bb471d0029",
+  "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820410d00bc43ffe2953a9e4a75f30856acccd594a28c7181a1a32ca01192bb471d0029",
+  "sourceMap": "26:23:0:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "26:23:0:-;;;;;",
+  "source": "pragma solidity ^0.4.17;\n\ncontract Auction {\n  \n}\n",
+  "sourcePath": "/Users/abc/crypto-currency/ethereum/tutorials/auction/contracts/Auction.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/Users/abc/crypto-currency/ethereum/tutorials/auction/contracts/Auction.sol",
+      "exportedSymbols": {
+        "Auction": [
+          2
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".17"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "0:24:0"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            2
+          ],
+          "name": "Auction",
+          "nodes": [
+            null
+          ],
+          "scope": 3
+        },
+        "id": 2,
+        "name": "ContractDefinition",
+        "src": "26:23:0"
+      }
+    ],
+    "id": 3,
+    "name": "SourceUnit",
+    "src": "0:50:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x345ca3e014aaf5dca488057592ee47305d9b3e10"
+    }
+  },
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-03-08T02:36:31.809Z"
+}
