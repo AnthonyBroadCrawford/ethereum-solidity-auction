@@ -10,10 +10,13 @@ contract Auction {
 
   function Auction() public { _highestBid = 0; }
 
-  function bid(address bidder) public payable {
-    if(msg.value > _highestBid){
-      _highestBidder = bidder;
-      _highestBid = msg.value;
+  //
+  //I should be using msg.value however, it's currently unknown to me how to pass that from the unit test.  That's why you see an unused payable modifier on the function.
+  //
+  function bid(uint amount) public payable {
+    if(amount > _highestBid) {
+      _highestBidder = msg.sender;
+      _highestBid = amount;
     }
   }
 
@@ -22,5 +25,13 @@ contract Auction {
   //
   function getHighestBidder() public view returns (address) {
     return _highestBidder;
+  }
+
+  //
+  //For testing support
+  //
+  function reset() public {
+    _highestBid = 0;
+    _highestBidder = this;
   }
 }

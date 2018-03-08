@@ -4,17 +4,38 @@ import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
 import "../contracts/Auction.sol";
 
+
+contract Bidder {
+  Auction _auction;
+
+  function Bidder(Auction auction) public { _auction = auction; }
+
+  function bid(uint amount) public {
+    _auction.bid(amount);
+  }
+}
+
+contract JaneDoe is Bidder { }
+contract JonDoe is Bidder { }
+
 contract TestAuction{
   Auction auction = Auction(DeployedAddresses.Auction());
 
+  //Reset highest bid and highest bidder so tests can operate automically.  Blazing that local host Eth via gas
+  function beforeEach() public {
+    auction.reset();
+  }
+
   function testHighestBidderIsRecorded() public {
-    address lowerBidderJonDoe = 0xe0F5206Bbd039e7B0592D8918820024E2A7487B9;
-    address higherBidderJaneDoe = 0xe0F5206BbD039E7B0592d8918820024E877437b9;
 
-    auction.bid.value(100).gas(100000000)(lowerBidderJonDoe);
-    auction.bid.value(1000).gas(100000000)(higherBidderJaneDoe);
+    //Instantiate Bidders to obtain unique address for each contract on the Blockchain
+    JonDoe jon = JonDoe(auction);
+    JaneDoe jane = JaneDoe(auction);
 
-    address expected = 0xe0F5206BbD039E7B0592d8918820024E877437b9;
+    jon.bid(10);
+    jane.bid(15);
+
+    address expected = jane;
     address actual = auction.getHighestBidder();
 
     Assert.equal(expected, actual, "Should record the highgest bidder");

@@ -25,8 +25,8 @@
       "constant": false,
       "inputs": [
         {
-          "name": "bidder",
-          "type": "address"
+          "name": "amount",
+          "type": "uint256"
         }
       ],
       "name": "bid",
@@ -48,20 +48,29 @@
       "payable": false,
       "stateMutability": "view",
       "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "reset",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
-  "bytecode": "0x6060604052341561000f57600080fd5b6000600181905550610202806100266000396000f300606060405260043610610056576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680623495a41461005b5780639cf5453d146100b0578063e3364bf6146100de575b600080fd5b341561006657600080fd5b61006e610133565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100dc600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190505061015c565b005b34156100e957600080fd5b6100f16101b1565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6001543411156101ae57806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550346001819055505b50565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820f91db9c9f63a831d64f33811a370f812bcbf0acaa09a5443ba0eda12759b8d9e0029",
-  "deployedBytecode": "0x606060405260043610610056576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680623495a41461005b5780639cf5453d146100b0578063e3364bf6146100de575b600080fd5b341561006657600080fd5b61006e610133565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100dc600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190505061015c565b005b34156100e957600080fd5b6100f16101b1565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6001543411156101ae57806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550346001819055505b50565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820f91db9c9f63a831d64f33811a370f812bcbf0acaa09a5443ba0eda12759b8d9e0029",
-  "sourceMap": "26:458:0:-;;;166:46;;;;;;;;208:1;194:11;:15;;;;26:458;;;;;;",
-  "deployedSourceMap": "26:458:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;392:90;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;216:150;;;;;;;;;;;;;;;;;;;;87:29;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;392:90;441:7;463:14;;;;;;;;;;;456:21;;392:90;:::o;216:150::-;281:11;;269:9;:23;266:96;;;318:6;301:14;;:23;;;;;;;;;;;;;;;;;;346:9;332:11;:23;;;;266:96;216:150;:::o;87:29::-;;;;;;;;;;;;;:::o",
-  "source": "pragma solidity ^0.4.17;\n\ncontract Auction {\n\n  //current highest bidder for auction\n  address public _highestBidder;\n\n  //current highest bid\n  uint _highestBid;\n\n  function Auction() public { _highestBid = 0; }\n\n  function bid(address bidder) public payable {\n    if(msg.value > _highestBid){\n      _highestBidder = bidder;\n      _highestBid = msg.value;\n    }\n  }\n\n  //\n  //Getters\n  //\n  function getHighestBidder() public view returns (address) {\n    return _highestBidder;\n  }\n}\n",
+  "bytecode": "0x6060604052341561000f57600080fd5b6000600181905550610256806100266000396000f300606060405260043610610061576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680623495a414610066578063454a2ab3146100bb578063d826f88f146100d3578063e3364bf6146100e8575b600080fd5b341561007157600080fd5b61007961013d565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100d16004808035906020019091905050610166565b005b34156100de57600080fd5b6100e66101bb565b005b34156100f357600080fd5b6100fb610205565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6001548111156101b857336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550806001819055505b50565b6000600181905550306000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820cffba137ecbac2a2772ab9fa9dddba9e86eb27914b9e5a8a71839cbba0fca0f80029",
+  "deployedBytecode": "0x606060405260043610610061576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680623495a414610066578063454a2ab3146100bb578063d826f88f146100d3578063e3364bf6146100e8575b600080fd5b341561007157600080fd5b61007961013d565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100d16004808035906020019091905050610166565b005b34156100de57600080fd5b6100e66101bb565b005b34156100f357600080fd5b6100fb610205565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b6001548111156101b857336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550806001819055505b50565b6000600181905550306000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16815600a165627a7a72305820cffba137ecbac2a2772ab9fa9dddba9e86eb27914b9e5a8a71839cbba0fca0f80029",
+  "sourceMap": "26:750:0:-;;;166:46;;;;;;;;208:1;194:11;:15;;;;26:750;;;;;;",
+  "deployedSourceMap": "26:750:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;569:90;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;397:146;;;;;;;;;;;;;;;;;;697:77;;;;;;;;;;;;;;87:29;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;569:90;618:7;640:14;;;;;;;;;;;633:21;;569:90;:::o;397:146::-;456:11;;447:6;:20;444:95;;;494:10;477:14;;:27;;;;;;;;;;;;;;;;;;526:6;512:11;:20;;;;444:95;397:146;:::o;697:77::-;741:1;727:11;:15;;;;765:4;748:14;;:21;;;;;;;;;;;;;;;;;;697:77::o;87:29::-;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.17;\n\ncontract Auction {\n\n  //current highest bidder for auction\n  address public _highestBidder;\n\n  //current highest bid\n  uint _highestBid;\n\n  function Auction() public { _highestBid = 0; }\n\n  //\n  //I should be using msg.value however, it's currently unknown to me how to pass that from the unit test.  That's why you see an unused payable modifier on the function.\n  //\n  function bid(uint amount) public payable {\n    if(amount > _highestBid) {\n      _highestBidder = msg.sender;\n      _highestBid = amount;\n    }\n  }\n\n  //\n  //Getters\n  //\n  function getHighestBidder() public view returns (address) {\n    return _highestBidder;\n  }\n\n  //\n  //For testing support\n  //\n  function reset() public {\n    _highestBid = 0;\n    _highestBidder = this;\n  }\n}\n",
   "sourcePath": "/Users/abc/crypto-currency/ethereum/tutorials/auction/contracts/Auction.sol",
   "ast": {
     "attributes": {
       "absolutePath": "/Users/abc/crypto-currency/ethereum/tutorials/auction/contracts/Auction.sol",
       "exportedSymbols": {
         "Auction": [
-          43
+          54
         ]
       }
     },
@@ -91,17 +100,17 @@
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            43
+            54
           ],
           "name": "Auction",
-          "scope": 44
+          "scope": 55
         },
         "children": [
           {
             "attributes": {
               "constant": false,
               "name": "_highestBidder",
-              "scope": 43,
+              "scope": 54,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "address",
@@ -127,7 +136,7 @@
             "attributes": {
               "constant": false,
               "name": "_highestBid",
-              "scope": 43,
+              "scope": 54,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "uint256",
@@ -159,7 +168,7 @@
               ],
               "name": "Auction",
               "payable": false,
-              "scope": 43,
+              "scope": 54,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -263,7 +272,7 @@
               ],
               "name": "bid",
               "payable": true,
-              "scope": 43,
+              "scope": 54,
               "stateMutability": "payable",
               "superFunction": null,
               "visibility": "public"
@@ -274,33 +283,33 @@
                   {
                     "attributes": {
                       "constant": false,
-                      "name": "bidder",
-                      "scope": 34,
+                      "name": "amount",
+                      "scope": 33,
                       "stateVariable": false,
                       "storageLocation": "default",
-                      "type": "address",
+                      "type": "uint256",
                       "value": null,
                       "visibility": "internal"
                     },
                     "children": [
                       {
                         "attributes": {
-                          "name": "address",
-                          "type": "address"
+                          "name": "uint",
+                          "type": "uint256"
                         },
                         "id": 14,
                         "name": "ElementaryTypeName",
-                        "src": "229:7:0"
+                        "src": "410:4:0"
                       }
                     ],
                     "id": 15,
                     "name": "VariableDeclaration",
-                    "src": "229:14:0"
+                    "src": "410:11:0"
                   }
                 ],
                 "id": 16,
                 "name": "ParameterList",
-                "src": "228:16:0"
+                "src": "409:13:0"
               },
               {
                 "attributes": {
@@ -311,7 +320,7 @@
                 "children": [],
                 "id": 17,
                 "name": "ParameterList",
-                "src": "260:0:0"
+                "src": "438:0:0"
               },
               {
                 "children": [
@@ -338,33 +347,16 @@
                           {
                             "attributes": {
                               "argumentTypes": null,
-                              "isConstant": false,
-                              "isLValue": false,
-                              "isPure": false,
-                              "lValueRequested": false,
-                              "member_name": "value",
-                              "referencedDeclaration": null,
-                              "type": "uint256"
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 15,
+                              "type": "uint256",
+                              "value": "amount"
                             },
-                            "children": [
-                              {
-                                "attributes": {
-                                  "argumentTypes": null,
-                                  "overloadedDeclarations": [
-                                    null
-                                  ],
-                                  "referencedDeclaration": 55,
-                                  "type": "msg",
-                                  "value": "msg"
-                                },
-                                "id": 18,
-                                "name": "Identifier",
-                                "src": "269:3:0"
-                              }
-                            ],
-                            "id": 19,
-                            "name": "MemberAccess",
-                            "src": "269:9:0"
+                            "id": 18,
+                            "name": "Identifier",
+                            "src": "447:6:0"
                           },
                           {
                             "attributes": {
@@ -376,14 +368,14 @@
                               "type": "uint256",
                               "value": "_highestBid"
                             },
-                            "id": 20,
+                            "id": 19,
                             "name": "Identifier",
-                            "src": "281:11:0"
+                            "src": "456:11:0"
                           }
                         ],
-                        "id": 21,
+                        "id": 20,
                         "name": "BinaryOperation",
-                        "src": "269:23:0"
+                        "src": "447:20:0"
                       },
                       {
                         "children": [
@@ -410,33 +402,50 @@
                                       "type": "address",
                                       "value": "_highestBidder"
                                     },
-                                    "id": 22,
+                                    "id": 21,
                                     "name": "Identifier",
-                                    "src": "301:14:0"
+                                    "src": "477:14:0"
                                   },
                                   {
                                     "attributes": {
                                       "argumentTypes": null,
-                                      "overloadedDeclarations": [
-                                        null
-                                      ],
-                                      "referencedDeclaration": 15,
-                                      "type": "address",
-                                      "value": "bidder"
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "sender",
+                                      "referencedDeclaration": null,
+                                      "type": "address"
                                     },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 66,
+                                          "type": "msg",
+                                          "value": "msg"
+                                        },
+                                        "id": 22,
+                                        "name": "Identifier",
+                                        "src": "494:3:0"
+                                      }
+                                    ],
                                     "id": 23,
-                                    "name": "Identifier",
-                                    "src": "318:6:0"
+                                    "name": "MemberAccess",
+                                    "src": "494:10:0"
                                   }
                                 ],
                                 "id": 24,
                                 "name": "Assignment",
-                                "src": "301:23:0"
+                                "src": "477:27:0"
                               }
                             ],
                             "id": 25,
                             "name": "ExpressionStatement",
-                            "src": "301:23:0"
+                            "src": "477:27:0"
                           },
                           {
                             "children": [
@@ -463,68 +472,51 @@
                                     },
                                     "id": 26,
                                     "name": "Identifier",
-                                    "src": "332:11:0"
+                                    "src": "512:11:0"
                                   },
                                   {
                                     "attributes": {
                                       "argumentTypes": null,
-                                      "isConstant": false,
-                                      "isLValue": false,
-                                      "isPure": false,
-                                      "lValueRequested": false,
-                                      "member_name": "value",
-                                      "referencedDeclaration": null,
-                                      "type": "uint256"
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 15,
+                                      "type": "uint256",
+                                      "value": "amount"
                                     },
-                                    "children": [
-                                      {
-                                        "attributes": {
-                                          "argumentTypes": null,
-                                          "overloadedDeclarations": [
-                                            null
-                                          ],
-                                          "referencedDeclaration": 55,
-                                          "type": "msg",
-                                          "value": "msg"
-                                        },
-                                        "id": 27,
-                                        "name": "Identifier",
-                                        "src": "346:3:0"
-                                      }
-                                    ],
-                                    "id": 28,
-                                    "name": "MemberAccess",
-                                    "src": "346:9:0"
+                                    "id": 27,
+                                    "name": "Identifier",
+                                    "src": "526:6:0"
                                   }
                                 ],
-                                "id": 29,
+                                "id": 28,
                                 "name": "Assignment",
-                                "src": "332:23:0"
+                                "src": "512:20:0"
                               }
                             ],
-                            "id": 30,
+                            "id": 29,
                             "name": "ExpressionStatement",
-                            "src": "332:23:0"
+                            "src": "512:20:0"
                           }
                         ],
-                        "id": 31,
+                        "id": 30,
                         "name": "Block",
-                        "src": "293:69:0"
+                        "src": "469:70:0"
                       }
                     ],
-                    "id": 32,
+                    "id": 31,
                     "name": "IfStatement",
-                    "src": "266:96:0"
+                    "src": "444:95:0"
                   }
                 ],
-                "id": 33,
+                "id": 32,
                 "name": "Block",
-                "src": "260:106:0"
+                "src": "438:105:0"
               }
             ],
-            "id": 34,
+            "id": 33,
             "name": "FunctionDefinition",
-            "src": "216:150:0"
+            "src": "397:146:0"
           },
           {
             "attributes": {
@@ -536,7 +528,7 @@
               ],
               "name": "getHighestBidder",
               "payable": false,
-              "scope": 43,
+              "scope": 54,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -549,9 +541,9 @@
                   ]
                 },
                 "children": [],
-                "id": 35,
+                "id": 34,
                 "name": "ParameterList",
-                "src": "417:2:0"
+                "src": "594:2:0"
               },
               {
                 "children": [
@@ -559,7 +551,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 42,
+                      "scope": 41,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -572,25 +564,25 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 36,
+                        "id": 35,
                         "name": "ElementaryTypeName",
-                        "src": "441:7:0"
+                        "src": "618:7:0"
                       }
                     ],
-                    "id": 37,
+                    "id": 36,
                     "name": "VariableDeclaration",
-                    "src": "441:7:0"
+                    "src": "618:7:0"
                   }
                 ],
-                "id": 38,
+                "id": 37,
                 "name": "ParameterList",
-                "src": "440:9:0"
+                "src": "617:9:0"
               },
               {
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 38
+                      "functionReturnParameters": 37
                     },
                     "children": [
                       {
@@ -603,34 +595,189 @@
                           "type": "address",
                           "value": "_highestBidder"
                         },
-                        "id": 39,
+                        "id": 38,
                         "name": "Identifier",
-                        "src": "463:14:0"
+                        "src": "640:14:0"
                       }
                     ],
-                    "id": 40,
+                    "id": 39,
                     "name": "Return",
-                    "src": "456:21:0"
+                    "src": "633:21:0"
                   }
                 ],
-                "id": 41,
+                "id": 40,
                 "name": "Block",
-                "src": "450:32:0"
+                "src": "627:32:0"
               }
             ],
-            "id": 42,
+            "id": 41,
             "name": "FunctionDefinition",
-            "src": "392:90:0"
+            "src": "569:90:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "reset",
+              "payable": false,
+              "scope": 54,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 42,
+                "name": "ParameterList",
+                "src": "711:2:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 43,
+                "name": "ParameterList",
+                "src": "721:0:0"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 5,
+                              "type": "uint256",
+                              "value": "_highestBid"
+                            },
+                            "id": 44,
+                            "name": "Identifier",
+                            "src": "727:11:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "30",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 0",
+                              "value": "0"
+                            },
+                            "id": 45,
+                            "name": "Literal",
+                            "src": "741:1:0"
+                          }
+                        ],
+                        "id": 46,
+                        "name": "Assignment",
+                        "src": "727:15:0"
+                      }
+                    ],
+                    "id": 47,
+                    "name": "ExpressionStatement",
+                    "src": "727:15:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3,
+                              "type": "address",
+                              "value": "_highestBidder"
+                            },
+                            "id": 48,
+                            "name": "Identifier",
+                            "src": "748:14:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 77,
+                              "type": "contract Auction",
+                              "value": "this"
+                            },
+                            "id": 49,
+                            "name": "Identifier",
+                            "src": "765:4:0"
+                          }
+                        ],
+                        "id": 50,
+                        "name": "Assignment",
+                        "src": "748:21:0"
+                      }
+                    ],
+                    "id": 51,
+                    "name": "ExpressionStatement",
+                    "src": "748:21:0"
+                  }
+                ],
+                "id": 52,
+                "name": "Block",
+                "src": "721:53:0"
+              }
+            ],
+            "id": 53,
+            "name": "FunctionDefinition",
+            "src": "697:77:0"
           }
         ],
-        "id": 43,
+        "id": 54,
         "name": "ContractDefinition",
-        "src": "26:458:0"
+        "src": "26:750:0"
       }
     ],
-    "id": 44,
+    "id": 55,
     "name": "SourceUnit",
-    "src": "0:485:0"
+    "src": "0:777:0"
   },
   "compiler": {
     "name": "solc",
@@ -644,5 +791,5 @@
     }
   },
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-03-08T03:47:08.195Z"
+  "updatedAt": "2018-03-08T15:10:44.361Z"
 }
