@@ -5,5 +5,18 @@ import "truffle/DeployedAddresses.sol";
 import "../contracts/Auction.sol";
 
 contract TestAuction{
+  Auction auction = Auction(DeployedAddresses.Auction());
 
+  function testHighestBidderIsRecorded() public {
+    address lowerBidderJonDoe = 0xe0F5206Bbd039e7B0592D8918820024E2A7487B9;
+    address higherBidderJaneDoe = 0xe0F5206BbD039E7B0592d8918820024E877437b9;
+
+    auction.bid.value(100).gas(100000000)(lowerBidderJonDoe);
+    auction.bid.value(1000).gas(100000000)(higherBidderJaneDoe);
+
+    address expected = 0xe0F5206BbD039E7B0592d8918820024E877437b9;
+    address actual = auction.getHighestBidder();
+
+    Assert.equal(expected, actual, "Should record the highgest bidder");
+  }
 }
