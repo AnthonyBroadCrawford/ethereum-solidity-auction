@@ -10,8 +10,8 @@ contract Auction {
 
   function Auction() public { _highestBid = 0; }
 
-  function bid(address bidder) public payable {
-    if(msg.value > _highestBid){
+  function bid(address bidder, uint bidAmount) public payable {
+    if(bidAmount > _highestBid){
       _highestBidder = bidder;
       _highestBid = msg.value;
     }
